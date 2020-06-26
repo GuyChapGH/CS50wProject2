@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Channel: {{ channel }}
+{% endblock %}
+
+{% block body %}
+    <h1>Channel {{ channel }}</h1>
+<ul>
+    {% for message in channel_messages %}
+    <li>
+        {{ message.channel }} {{ message.body }} {{ message.date_time }} {{ message.display_name }}
+    </li>
+{% else %}
+    <li>
+        No messages.
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

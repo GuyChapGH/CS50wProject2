@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %} Display Name {% endblock %}
+
+{% block body %}
+
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+    <form id="form">
+        <input id="DisplayName" autocomplete="off" autofocus placeholder="Display name" type="text">
+        <input type="submit">
+    </form>
+<br>
+<br>
+    <form action="/" method="post" id ="form1">
+        <input id="ChannelName" autocomplete="off" placeholder="Channel name" type="text">
+        <input type="submit">
+    </form>
+<br>
+<br>
+    <ul>
+        {% for channel in channel_rooms %}
+            <li>
+            <a href="{{ url_for('view_channel', channel_name=channel) }}"> {{ channel }}</a>
+            </li>
+        {% else %}
+            <li>
+                No channels found.
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
