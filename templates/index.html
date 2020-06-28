@@ -13,15 +13,15 @@
 <br>
 <br>
     <form action="/" method="post" id ="form1">
-        <input id="ChannelName" autocomplete="off" placeholder="Channel name" type="text">
+        <input id="ChannelName" name="ChannelName" autocomplete="off" placeholder="Channel name" type="text">
         <input type="submit">
     </form>
 <br>
 <br>
-    <ul>
+   <ul>
         {% for channel in channel_rooms %}
             <li>
-            <a href="{{ url_for('view_channel', channel_name=channel) }}"> {{ channel }}</a>
+                <a href="{{ url_for ('view_channel', channel_name=channel) }}">{{ channel }}</a>
             </li>
         {% else %}
             <li>

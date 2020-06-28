@@ -8,14 +8,13 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
 # Global variables for channels and messages
-channel_rooms = ["general", "chat"]
+channel_rooms = ["general", "chat", "guy"]
 channel_messages = [{"channel": "general", "body": "Welcome to the General Channel",
                      "date_time": "timestamp", "display_name": "DisplayName"}]
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # ISSUE: AT 26/6/20 NOT ALLOWING USER TO CREATE NEW CHANNEL
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         # Receiving input from index page to create new channel in channel_rooms
@@ -28,6 +27,7 @@ def index():
     # If come to this page via GET (as by clicking a link or via redirect)
     else:
         return render_template("index.html", channel_rooms=channel_rooms)
+        # return render_template("error.html", message="Channel name not available")
 
 
 @app.route("/channels/<channel_name>", methods=["GET", "POST"])
